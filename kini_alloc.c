@@ -1,15 +1,11 @@
 /*
- * Ricardo Joaquinito allocator v0.1 - "For those who forget the size they have allocated"
+ * Ricardo Joaquinito allocator v0.2 - "For those who forget the size they have allocated"
  *
  * License: CC0
 */
 
 #include <stdlib.h>
 #include <limits.h>
-
-/* TODO
-#define free kini_free
-*/
 
 #define malloc kini_malloc
 
@@ -21,6 +17,11 @@ typedef struct kini_malloc_t {
     void *ptr;
     size_t size;
 }*KMT;
+
+void kini_free(KMT kmt)
+{
+    free(kmt->ptr);
+}
 
 KMT kini_malloc(size_t size) {
     #undef malloc
